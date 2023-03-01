@@ -38,6 +38,8 @@ function! IDE()
     set tabstop=2                         "Tab width
     set titlestring=%{ide#ide#cwd()}      "Set title to working folder
     set visualbell                        "Disable bell sound
+    set wildmenu
+    set wildmode=longest,list,full
     set wrap                              "Enable line wrap
     syntax enable                         "Language syntax highlight
 

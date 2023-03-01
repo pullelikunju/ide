@@ -71,16 +71,20 @@ function! ide#buffertab#handler()
 endfunction
 function! ide#buffertab#chandler()
   let l:sel=ide#buffertab#selection()
-  echo win_findbuf(l:sel[2])
-  for l:win in win_findbuf(l:sel[2])
-    call win_gotoid(l:win)
-    let l:name=bufname()
-    if l:name !=? ''
-      execute 'enew'
-    endif
-  endfor
-  if l:name !=? ''
+  let l:wins=win_findbuf(l:sel[2])
+  if len(wins) ==# 0
     execute 'bd'.l:sel[2]
+  else
+    for l:win in l:wins
+      call win_gotoid(l:win)
+      let l:name=bufname()
+      if l:name !=? ''
+        execute 'enew'
+      endif
+    endfor
+    if l:name !=? ''
+      execute 'bd'.l:sel[2]
+    endif
   endif
   call win_gotoid(g:ide.win.last)
   call ide#buffertab#update()

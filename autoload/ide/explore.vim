@@ -77,6 +77,9 @@ function! ide#explore#handler()
     else
       call add(g:ide.expand, l:sel[1])
       call ide#explore#update()
+      if glob(ide#ide#joinpath(l:sel[1], '*')) ==# ''
+        echo 'Folder is empty'
+      endif
     endif
   else
     execute 'edit '.l:sel[1]
