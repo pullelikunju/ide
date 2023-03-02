@@ -4,7 +4,7 @@
 # Easy to learn
 # Easly modified or extended for your use case
 # Less invasive
-# No hijacking of other mapping
+# No hijacking of keybinding
 
 Please report if you find any bugs or have some feature ideas
 Pulleli Kunju
