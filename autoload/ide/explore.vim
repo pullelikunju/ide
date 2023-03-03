@@ -64,6 +64,7 @@ function! ide#explore#tree(dir, sp)
   return (l:drs+l:fls)
 endfunction
 function! ide#explore#handler()
+  echo ''
   let l:sel=ide#explore#selection()
   call win_gotoid(g:ide.win.last)
   if l:sel[0] ==? 'dir'
@@ -77,7 +78,7 @@ function! ide#explore#handler()
       call add(g:ide.expand, l:sel[1])
       call ide#explore#update()
       if glob(ide#ide#joinpath(l:sel[1], '*')) ==# ''
-        echo 'Folder is empty'
+        echo 'Opened empty folder'
       endif
     endif
   else
@@ -91,9 +92,11 @@ endfunction
 function! ide#explore#shandler()
   let l:sel=ide#explore#selection()
   if l:sel[0] ==? 'dir'
+    echo 'Opening folder . . .'
     silent execute '!start explorer '.l:sel[1]
   else
-    execute 'tabnew '.l:sel[1]
+    echo 'Opening in new tab . . .'
+    silent execute 'tabnew '.l:sel[1]
   endif
   call win_gotoid(g:ide.win.last)
 endfunction

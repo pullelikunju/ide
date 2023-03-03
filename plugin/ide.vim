@@ -26,6 +26,9 @@ function! IDE()
     set breakindent                       "Wrapped lines get the same indent
     set cursorline                        "Enable highlighting
     set expandtab                         "Convert tab to space
+    set guicursor=a:ver10-Cursor/lCursor  "Default cursor
+    set guicursor+=n:block-Cursor/lCursor "Normal mode cursor
+    set guicursor+=r:hor25-Cursor/lCursor "Replace mode cursor
     set hlsearch                          "Highlight search results
     set linebreak                         "Don't break word by wrapping
     set list                              "Show white spaces
