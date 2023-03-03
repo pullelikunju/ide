@@ -66,7 +66,6 @@ endfunction
 function! ide#explore#handler()
   echo ''
   let l:sel=ide#explore#selection()
-  call win_gotoid(g:ide.win.last)
   if l:sel[0] ==? 'dir'
     if l:sel[1] ==? '..'
       call ide#explore#update()
@@ -81,13 +80,18 @@ function! ide#explore#handler()
         echo 'Opened empty folder'
       endif
     endif
+    noautocmd call win_gotoid(g:ide.win.last)
   else
+    noautocmd call win_gotoid(g:ide.win.last)
     execute 'edit '.l:sel[1]
   endif
 endfunction
 function! ide#explore#chandler()
-  execute 'cd '.ide#explore#selection()[1]
-  call win_gotoid(g:ide.win.last)
+  let l:sel=ide#explore#selection()
+  if l:sel[0] ==# 'dir'
+    execute 'cd 'l:sel[1]
+  endif
+  noautocmd call win_gotoid(g:ide.win.last)
 endfunction
 function! ide#explore#shandler()
   let l:sel=ide#explore#selection()
@@ -98,7 +102,7 @@ function! ide#explore#shandler()
     echo 'Opening in new tab . . .'
     silent execute 'tabnew '.l:sel[1]
   endif
-  call win_gotoid(g:ide.win.last)
+  noautocmd call win_gotoid(g:ide.win.last)
 endfunction
 function! ide#explore#selection()
   let l:row=getmousepos().line
