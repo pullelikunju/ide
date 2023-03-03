@@ -10,8 +10,7 @@ function! ide#buffertab#init()
     setlocal matchpairs=
     setlocal nobuflisted
     setlocal nocursorline
-    setlocal list
-    setlocal listchars=extends:»,precedes:«
+    setlocal nolist
     setlocal nonumber
     setlocal norelativenumber
     setlocal noruler
@@ -21,7 +20,7 @@ function! ide#buffertab#init()
     setlocal wincolor=TabLine
     setlocal winfixheight
     setlocal winfixwidth
-    setlocal nowrap
+    setlocal wrap
     syntax match buffertabactive "\v\[[0-9]+:[^[]*]"
     highlight link buffertabactive TabLineSel
     syntax match buffertabloaded "\v\[[0-9]+¦[^[]*]"
@@ -64,36 +63,37 @@ function! ide#buffertab#update()
   if(!empty(getbufline('--idebuffertab--', 2)))
     silent call deletebufline('--idebuffertab--', 1, '$')
   endif
+  call win_execute(g:ide.win.buffertab, 'resize '.(1+len(l:bufs)/&columns))
   call setbufline('--idebuffertab--', 1, l:bufs)
 endfunction
 function! ide#buffertab#handler()
   let l:sel=ide#buffertab#selection()
-  call win_gotoid(g:ide.win.last)
+  noautocmd call win_gotoid(g:ide.win.last)
   execute 'b'.l:sel[2]
 endfunction
 function! ide#buffertab#chandler()
   let l:sel=ide#buffertab#selection()
   let l:wins=win_findbuf(l:sel[2])
   if len(wins) ==# 0
-    execute 'bd'.l:sel[2]
+    noautocmd execute 'bd'.l:sel[2]
   else
     for l:win in l:wins
-      call win_gotoid(l:win)
+      noautocmd call win_gotoid(l:win)
       let l:name=bufname()
       if l:name !=? ''
-        execute 'enew'
+        noautocmd execute 'enew'
       endif
     endfor
     if l:name !=? ''
-      execute 'bd'.l:sel[2]
+      noautocmd execute 'bd'.l:sel[2]
     endif
   endif
-  call win_gotoid(g:ide.win.last)
+  noautocmd call win_gotoid(g:ide.win.last)
   call ide#buffertab#update()
 endfunction
 function! ide#buffertab#shandler()
   let l:sel=ide#buffertab#selection()
-  call win_gotoid(g:ide.win.last)
+  noautocmd call win_gotoid(g:ide.win.last)
   execute 'echo expand("#'.l:sel[2].':p")'
 endfunction
 function! ide#buffertab#selection()
