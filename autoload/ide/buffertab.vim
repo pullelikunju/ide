@@ -41,6 +41,9 @@ function! ide#buffertab#update()
   let l:bufnr=bufnr('%')
   let l:bufs=''
   for l:buf in getbufinfo({'buflisted': 1})
+    if len(l:bufs) ># 0
+      let l:bufs.=g:ide.buffertabseparator
+    endif
     let l:bt=len(l:bufs)
     let l:bufs.='['.l:buf.bufnr
     if l:buf.bufnr ==# l:bufnr
@@ -57,10 +60,9 @@ function! ide#buffertab#update()
     endif
     let l:bufs.=']'
     call add(g:ide.buffertabmap, [l:bt, len(l:bufs), l:buf.bufnr])
-    let l:bufs.='  '
   endfor
   if(!empty(getbufline('--idebuffertab--', 2)))
-    call deletebufline('--idebuffertab--', 1, '$')
+    silent call deletebufline('--idebuffertab--', 1, '$')
   endif
   call setbufline('--idebuffertab--', 1, l:bufs)
 endfunction

@@ -11,6 +11,7 @@ function! IDE()
     let g:ide={}
     let g:ide.border=1                    "Border width set by theme
     let g:ide.buffertab=1                 "Height of buffertab; 0 to disable
+    let g:ide.buffertabseparator='  '     "Separator between tabs
     let g:ide.explore=30                  "Width of explore; 0 to disable
     let g:ide.exploreindent='  '          "Indentation for tree levels
     let g:ide.numberwidth=4               "Width to use for number; 0 to disable
@@ -28,7 +29,7 @@ function! IDE()
     set hlsearch                          "Highlight search results
     set linebreak                         "Don't break word by wrapping
     set list                              "Show white spaces
-    set listchars=nbsp:‗,space:·,tab:«·»  "Symbol for white space
+    set listchars=nbsp:‗,space:·,tab:«\ » "Symbol for white space
     set mouse=inv                         "Mouse only work in normal mode
     set scrolloff=0                       "Disable jumping when clicked
     set shiftwidth=2                      "Indent selected with >

@@ -12,7 +12,6 @@ function! ide#explore#init()
     setlocal nocursorline
     setlocal list
     setlocal listchars=extends:»,precedes:«
-"setlocal nomodifiable
     setlocal nonumber
     setlocal norelativenumber
     setlocal noruler
@@ -37,21 +36,18 @@ function! ide#explore#init()
 endfunction
 function! ide#explore#update()
   if(!empty(getbufline('--ideexplore--', 2)))
-    call deletebufline('--ideexplore--', 1, '$')
-    echo ''
+    silent call deletebufline('--ideexplore--', 1, '$')
   endif
   let g:ide.exploremap=[['dir', '..']]
   call setbufline('--ideexplore--', 1, [g:ide.exploreindent.'└≡..']+ide#explore#tree(ide#ide#cwd(), g:ide.exploreindent))
 endfunction
 function! ide#explore#tree(dir, sp)
-"  let l:mdrs=[]
   let l:drs=[]
   let l:fls=[]
   let l:mfls=[]
-  for l:itm in readdirex(a:dir, {e -> e.name !~ '.[^.]*.swp$'}, #{sort: 'icase'})
+  for l:itm in readdirex(a:dir, {e -> e.name !~ '.[^.]*.swp$'}, #{sort:'icase'})
     let l:name=ide#ide#joinpath(a:dir, l:itm.name)
     if l:itm.type ==? 'dir'
-"      call add(l:mdrs, ['dir', l:name])
       call add(g:ide.exploremap, ['dir', l:name])
       call add(l:drs, a:sp.'└≡'.l:itm.name)
       if(index(g:ide.expand, l:name) >=0 )
@@ -71,7 +67,10 @@ function! ide#explore#handler()
   let l:sel=ide#explore#selection()
   call win_gotoid(g:ide.win.last)
   if l:sel[0] ==? 'dir'
-    if index(g:ide.expand, l:sel[1]) >=# 0
+    if l:sel[1] ==? '..'
+      call ide#explore#update()
+      echo 'Folder Refreshed'
+    elseif index(g:ide.expand, l:sel[1]) >=# 0
       call remove(g:ide.expand, index(g:ide.expand, l:sel[1]))
       call ide#explore#update()
     else
