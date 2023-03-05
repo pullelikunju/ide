@@ -26,8 +26,8 @@ function! ide#ide#init()
     execute 'vertical '.(g:ide.workspacewidth+g:ide.numberwidth).'split'
     let l:i+=1
   endwhile
-  call ide#buffertab#update()
   call ide#explore#update()
+  call ide#buffertab#update()
   noremap <silent> <C-LeftMouse> <LeftMouse>:call ide#ide#handler('c')<CR>
   noremap <silent> <S-LeftMouse> <LeftMouse>:call ide#ide#handler('s')<CR>
   augroup IDEWinNr

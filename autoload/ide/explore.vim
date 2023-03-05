@@ -23,10 +23,11 @@ function! ide#explore#init()
     setlocal winfixwidth
     syntax keyword exploresymbol └
     highlight link exploresymbol Comment
-    syntax match exploredirectory "\v≡[^$]*$"
+    syntax match exploredirectory '\v≡[^$]*$'
     highlight link exploredirectory Directory
-    syntax match explorefile "\v─[^$]*$"
+    syntax match explorefile '\v─[^$]*$'
     highlight link explorefile File
+    highlight link exploreactive PmenuSel
     noremap <silent> <buffer> <LeftRelease> <LeftRelease>:call ide#explore#handler()<CR>
     augroup IDEExploreUpdate
       autocmd!
@@ -63,6 +64,17 @@ function! ide#explore#tree(dir, sp)
   endfor
   return (l:drs+l:fls)
 endfunction
+function! ide#explore#active(active)
+  call win_execute(g:ide.win.explore, "match exploreactive '\\v%".0."l─[^$]+$'")
+  let l:i=0
+  while l:i <# len(g:ide.exploremap)
+    if a:active ==? g:ide.exploremap[l:i][1]
+      call win_execute(g:ide.win.explore, "match exploreactive '\\v%".(l:i+1).'l'.fnamemodify(a:active, ':t')."$'")
+      let l:i=len(g:ide.exploremap)
+    endif
+    let l:i+=1
+  endwhile
+endfunction
 function! ide#explore#handler()
   echo ''
   let l:sel=ide#explore#selection()
@@ -80,7 +92,7 @@ function! ide#explore#handler()
         echo 'Opened empty folder'
       endif
     endif
-    noautocmd call win_gotoid(g:ide.win.last)
+    call win_gotoid(g:ide.win.last)
   else
     noautocmd call win_gotoid(g:ide.win.last)
     execute 'edit '.l:sel[1]
@@ -90,6 +102,9 @@ function! ide#explore#chandler()
   let l:sel=ide#explore#selection()
   if l:sel[0] ==# 'dir'
     execute 'cd 'l:sel[1]
+  elseif l:sel[0] ==# 'file'
+    echo 'Opening in new tab . . .'
+    silent execute 'tabnew '.l:sel[1]
   endif
   noautocmd call win_gotoid(g:ide.win.last)
 endfunction
@@ -98,9 +113,9 @@ function! ide#explore#shandler()
   if l:sel[0] ==? 'dir'
     echo 'Opening folder . . .'
     silent execute '!start explorer '.l:sel[1]
-  else
-    echo 'Opening in new tab . . .'
-    silent execute 'tabnew '.l:sel[1]
+  elseif l:sel[0] ==# 'file'
+    echo 'Opening in default app . . .'
+    silent execute '!start explorer '.l:sel[1]
   endif
   noautocmd call win_gotoid(g:ide.win.last)
 endfunction

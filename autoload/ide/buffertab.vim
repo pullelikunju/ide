@@ -47,6 +47,7 @@ function! ide#buffertab#update()
     let l:bufs.='['.l:buf.bufnr
     if l:buf.bufnr ==# l:bufnr
       let l:bufs.=':'
+      call ide#explore#active(l:buf.name)
     elseif l:buf.loaded ==? 1
       let l:bufs.='¦'
     else
@@ -94,7 +95,14 @@ endfunction
 function! ide#buffertab#shandler()
   let l:sel=ide#buffertab#selection()
   noautocmd call win_gotoid(g:ide.win.last)
-  execute 'echo expand("#'.l:sel[2].':p")'
+  let l:exp=expand('#'.l:sel[2].':h')
+  while len(l:exp) ># len(ide#ide#cwd())
+    if index(g:ide.expand, l:exp) <# 0
+      call add(g:ide.expand, l:exp)
+    endif
+    let l:exp=fnamemodify(l:exp, ':h')
+  endwhile
+  call ide#explore#update()
 endfunction
 function! ide#buffertab#selection()
   let l:col=getmousepos().column
