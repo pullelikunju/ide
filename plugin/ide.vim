@@ -7,7 +7,9 @@
 "              it and/or modify it under GPL license
 " ============================================================================
 function! IDE()
-  if !exists('g:ide')
+  if exists('g:ide')
+    echo 'Already running'
+  else
     let g:ide={}
     let g:ide.border=1                    "Border width set by theme
     let g:ide.buffertab=1                 "Height of buffertab; 0 to disable
@@ -20,7 +22,6 @@ function! IDE()
     let g:ide.workspaceheight=24          "Height of workspace window
     let g:ide.workspacewidth=80           "Width of workspace window
 
-    colorscheme slate                     "Theme
     set autoindent                        "Auto indent new lines
     set backspace=eol,indent,start        "Backspace over
     set breakindent                       "Wrapped lines get the same indent
