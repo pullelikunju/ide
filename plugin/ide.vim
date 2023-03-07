@@ -19,7 +19,7 @@ function! IDE()
     let g:ide.numberwidth=4               "Width to use for number; 0 to disable
     let g:ide.laststatus=2                "Status bar: 0, 1 or 2
     let g:ide.workspaces=2                "Number of workspace windows
-    let g:ide.workspaceheight=24          "Height of workspace window
+    let g:ide.workspaceheight=35          "Height of workspace window
     let g:ide.workspacewidth=80           "Width of workspace window
 
     set autoindent                        "Auto indent new lines

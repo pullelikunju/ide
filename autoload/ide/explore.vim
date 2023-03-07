@@ -10,8 +10,7 @@ function! ide#explore#init()
     setlocal filetype=--ideexplore--
     setlocal nobuflisted
     setlocal nocursorline
-    setlocal list
-    setlocal listchars=extends:»,precedes:«
+    setlocal nolist
     setlocal nonumber
     setlocal norelativenumber
     setlocal noruler
@@ -21,7 +20,7 @@ function! ide#explore#init()
     setlocal statusline=\ 
     setlocal winfixheight
     setlocal winfixwidth
-    syntax keyword exploresymbol └
+    syntax match exploresymbol '\v└'
     highlight link exploresymbol Comment
     syntax match exploredirectory '\v≡[^$]*$'
     highlight link exploredirectory Directory
