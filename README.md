@@ -4,7 +4,7 @@
 # Easy to learn
 # Easly modified or extended for your use case
 # Less invasive
-# No hijacking of keybinding
+# No hijacking of keybindings
 
 Please report if you find any bugs or have some feature ideas
 Pulleli Kunju
