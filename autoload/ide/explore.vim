@@ -100,7 +100,7 @@ endfunction
 function! ide#explore#chandler()
   let l:sel=ide#explore#selection()
   if l:sel[0] ==# 'dir'
-    execute 'cd 'l:sel[1]
+    execute 'cd '.l:sel[1]
   elseif l:sel[0] ==# 'file'
     echo 'Opening in new tab . . .'
     silent execute 'tabnew '.l:sel[1]

@@ -56,7 +56,8 @@ function! ide#ide#cwd()
   return tolower(getcwd())
 endfunction
 function! ide#ide#joinpath(dir, file)
-  return a:dir.ide#ide#pathseparator().a:file
+  let l:sep=ide#ide#pathseparator()
+  return trim(a:dir, l:sep, 2).l:sep.a:file
 endfunction
 function! ide#ide#pathseparator()
   let l:sep='/'
