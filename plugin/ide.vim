@@ -11,10 +11,9 @@ function! IDE()
     echo 'Already running'
   else
     let g:ide={}
-    let g:ide.border=1                    "Border width set by theme
-    let g:ide.buffertab=1                 "Height of buffertab; 0 to disable
+    let g:ide.buffertab=1                 "Height of buffertab
     let g:ide.buffertabseparator='  '     "Separator between tabs
-    let g:ide.explore=30                  "Width of explore; 0 to disable
+    let g:ide.explore=30                  "Width of explore
     let g:ide.exploreindent='  '          "Indentation for tree levels
     let g:ide.numberwidth=4               "Width to use for number; 0 to disable
     let g:ide.laststatus=2                "Status bar: 0, 1 or 2

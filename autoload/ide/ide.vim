@@ -1,4 +1,5 @@
 function! ide#ide#init()
+  let g:ide.border=1
   let g:ide.columns=g:ide.explore+g:ide.workspaces*(g:ide.border+g:ide.numberwidth+g:ide.workspacewidth)
   let &columns=g:ide.columns
   let &colorcolumn=join(range((g:ide.workspacewidth+1),g:ide.columns),',')
