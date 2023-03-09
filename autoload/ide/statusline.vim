@@ -12,7 +12,7 @@ function! ide#statusline#init()
     set statusline+=\ 
     set statusline+=%n
     set statusline+=:
-    set statusline+=%f
+    let &statusline.='%.'.(g:ide.workspacewidth-34).'f'
     set statusline+=%=
     set statusline+=%{&filetype}
     set statusline+=\ 

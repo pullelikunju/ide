@@ -20,11 +20,9 @@ function! ide#explore#init()
     setlocal statusline=\ 
     setlocal winfixheight
     setlocal winfixwidth
-    syntax match exploresymbol '\v└'
-    highlight link exploresymbol Comment
-    syntax match exploredirectory '\v≡[^$]*$'
+    syntax match exploredirectory /≡[^$]*$/hs=s+1
     highlight link exploredirectory Directory
-    syntax match explorefile '\v─[^$]*$'
+    syntax match explorefile /─[^$]*$/hs=s+1
     highlight link explorefile File
     highlight link exploreactive PmenuSel
     noremap <silent> <buffer> <LeftRelease> <LeftRelease>:call ide#explore#handler()<CR>
