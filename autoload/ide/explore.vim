@@ -18,6 +18,7 @@ function! ide#explore#init()
     setlocal noswapfile
     setlocal nowrap
     setlocal statusline=\ 
+    setlocal wincolor=Comment
     setlocal winfixheight
     setlocal winfixwidth
     syntax match exploredirectory /≡[^$]*$/hs=s+1
