@@ -25,7 +25,7 @@ function! ide#explore#init()
     highlight link exploredirectory Directory
     syntax match explorefile /─[^$]*$/hs=s+1
     highlight link explorefile File
-    highlight link exploreactive PmenuSel
+    highlight link exploreactive FileSel
     noremap <silent> <buffer> <LeftRelease> <LeftRelease>:call ide#explore#handler()<CR>
     augroup IDEExploreUpdate
       autocmd!

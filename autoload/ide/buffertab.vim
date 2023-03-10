@@ -22,9 +22,9 @@ function! ide#buffertab#init()
     setlocal winfixwidth
     setlocal wrap
     syntax match buffertabactive "\v\[[0-9]+:[^[]*]"
-    highlight link buffertabactive TabLineSel
+    highlight link buffertabactive TabLineFill
     syntax match buffertabloaded "\v\[[0-9]+¦[^[]*]"
-    highlight link buffertabloaded TabLineFill
+    highlight link buffertabloaded TabLineSel
     noremap <silent> <buffer> <LeftRelease> <LeftRelease>:call ide#buffertab#handler()<CR>
     augroup IDEBuffertabUpdate
       autocmd!
