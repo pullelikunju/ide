@@ -21,6 +21,7 @@ function! IDE()
     let g:ide.workspaceheight=34          "Height of workspace window
     let g:ide.workspacewidth=80           "Width of workspace window
 
+    colorscheme ide                       "Theme
     set autoindent                        "Auto indent new lines
     set backspace=eol,indent,start        "Backspace over
     set breakindent                       "Wrapped lines get the same indent
@@ -30,6 +31,7 @@ function! IDE()
     set guicursor=a:ver10-Cursor/lCursor  "Default cursor
     set guicursor+=n:block-Cursor/lCursor "Normal mode cursor
     set guicursor+=r:hor25-Cursor/lCursor "Replace mode cursor
+    set guifont=Courier_New:h10           "Font and size
     set hlsearch                          "Highlight search results
     set linebreak                         "Don't break word by wrapping
     set list                              "Show white spaces
