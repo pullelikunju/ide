@@ -31,6 +31,7 @@ function! IDE()
     set guicursor=a:ver10-Cursor/lCursor  "Default cursor
     set guicursor+=n:block-Cursor/lCursor "Normal mode cursor
     set guicursor+=r:hor25-Cursor/lCursor "Replace mode cursor
+    set guicursor+=v:hor10-Cursor/lCursor "Replace mode cursor
     set guifont=Courier_New:h10           "Font and size
     set hlsearch                          "Highlight search results
     set linebreak                         "Don't break word by wrapping
