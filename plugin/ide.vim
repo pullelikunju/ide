@@ -6,10 +6,8 @@
 "              to the extent permitted by applicable law. You can redistribute
 "              it and/or modify it under GPL license
 " ============================================================================
-function! IDE()
-  if exists('g:ide')
-    echo 'Already running'
-  else
+function! g:IDE(ide='')
+  if !exists('g:ide')
     let g:ide={}
     let g:ide.buffertab=1                 "Height of buffertab
     let g:ide.buffertabseparator='  '     "Separator between tabs
@@ -52,9 +50,11 @@ function! IDE()
     syntax enable                         "Language syntax highlight
 
     call ide#ide#init()
+  else
+    call ide#workspace#cmd(a:ide)
   endif
 endfunction
 augroup IDEStart
   autocmd!
-  autocmd VimEnter * call IDE()
+  autocmd VimEnter * call g:IDE()
 augroup END

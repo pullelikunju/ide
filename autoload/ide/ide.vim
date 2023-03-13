@@ -21,6 +21,7 @@ function! ide#ide#init()
   call ide#statusline#init()
   call ide#explore#init()
   call ide#buffertab#init()
+  call ide#workspace#init()
   let l:i=1
   while l:i <# g:ide.workspaces
     wincmd b

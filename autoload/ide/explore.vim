@@ -29,7 +29,7 @@ function! ide#explore#init()
     noremap <silent> <buffer> <LeftRelease> <LeftRelease>:call ide#explore#handler()<CR>
     augroup IDEExploreUpdate
       autocmd!
-      autocmd DirChanged  * call ide#explore#update()
+      autocmd DirChanged * call ide#explore#update()
     augroup END
   endif
 endfunction
