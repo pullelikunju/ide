@@ -44,8 +44,12 @@ function! ide#explore#tree(dir, sp)
   let l:drs=[]
   let l:fls=[]
   let l:mfls=[]
-  for l:itm in readdirex(a:dir, {e -> e.name !~ '.[^.]*.swp$'}, #{sort:'icase'})
+  for l:name in readdir(a:dir, {n -> n !~ '.[^.]*.swp$'})
+    let l:itm={'name': l:name, 'type': 'file'}
     let l:name=ide#ide#joinpath(a:dir, l:itm.name)
+    if isdirectory(l:name)
+      let l:itm.type='dir'
+    endif
     if l:itm.type ==? 'dir'
       call add(g:ide.exploremap, ['dir', l:name])
       call add(l:drs, a:sp.'└≡'.l:itm.name)

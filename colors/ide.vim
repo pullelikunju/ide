@@ -66,7 +66,7 @@ for s:ln in [
   \{'id': 'Question',        'fg': 'purple'},
   \{'id': 'QuickFixLine',    'fg': 'black',   'bg': 'yellow'},
   \{'id': 'Repeat',          'fg': 'purple'},
-  \{'id': 'Search',          'fg': 'white',   'bg': 'gray'},
+  \{'id': 'Search',          'fg': 'white',   'bg': 'visual'},
   \{'id': 'Special',         'fg': 'blue'},
   \{'id': 'SpecialChar',     'fg': 'yellowD'},
   \{'id': 'SpecialComment',  'fg': 'comment'},
