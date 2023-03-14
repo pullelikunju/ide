@@ -65,13 +65,15 @@ endfunction
 function! ide#explore#active(active)
   call win_execute(g:ide.win.explore, "match exploreactive '\\v%".0."l─[^$]+$'")
   let l:i=0
-  while l:i <# len(g:ide.exploremap)
-    if a:active ==? g:ide.exploremap[l:i][1]
-      call win_execute(g:ide.win.explore, "match exploreactive '\\v%".(l:i+1).'l'.fnamemodify(a:active, ':t')."$'")
-      let l:i=len(g:ide.exploremap)
-    endif
-    let l:i+=1
-  endwhile
+  if exists('g:ide.exploremap')
+    while l:i <# len(g:ide.exploremap)
+      if a:active ==? g:ide.exploremap[l:i][1]
+        call win_execute(g:ide.win.explore, "match exploreactive '\\v%".(l:i+1).'l'.fnamemodify(a:active, ':t')."$'")
+        let l:i=len(g:ide.exploremap)
+      endif
+      let l:i+=1
+    endwhile
+  endif
 endfunction
 function! ide#explore#handler()
   echo ''

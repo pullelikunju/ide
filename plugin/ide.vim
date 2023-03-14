@@ -25,7 +25,7 @@ function! g:IDE(ide='')
     set breakindent                       "Wrapped lines get the same indent
     set cursorline                        "Enable highlighting
     set expandtab                         "Convert tab to space
-    set fillchars=vert:│,fold:-,eob:\ ,lastline:@
+    set fillchars=vert:│,fold:-,eob:\ 
     set guicursor=a:ver10-Cursor/lCursor  "Default cursor
     set guicursor+=n:block-Cursor/lCursor "Normal mode cursor
     set guicursor+=r:hor25-Cursor/lCursor "Replace mode cursor
@@ -54,7 +54,8 @@ function! g:IDE(ide='')
     call ide#workspace#cmd(a:ide)
   endif
 endfunction
-augroup IDEStart
-  autocmd!
-  autocmd VimEnter * call g:IDE()
-augroup END
+"augroup IDEStart
+"  autocmd!
+"  autocmd VimEnter * call g:IDE()
+"augroup END
+command! -nargs=* IDE call IDE(<f-args>)
