@@ -17,7 +17,11 @@ function! ide#buffertab#init()
     setlocal nospell
     setlocal noswapfile
     setlocal statusline=%#Normal#%{ide#ide#cwd()}
-    setlocal wincolor=TabLine
+    if has('nvim')
+      setlocal winhighlight=TabLine:TabLine
+    else
+      setlocal wincolor=TabLine
+    endif
     setlocal winfixheight
     setlocal winfixwidth
     setlocal wrap

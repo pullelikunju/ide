@@ -30,7 +30,11 @@ function! g:IDE(ide='')
     set guicursor+=n:block-Cursor/lCursor "Normal mode cursor
     set guicursor+=r:hor25-Cursor/lCursor "Replace mode cursor
     set guicursor+=v:hor10-Cursor/lCursor "Replace mode cursor
-    set guifont=Courier_New:h10           "Font and size
+    if has('nvim')
+      set guifont=Courier\ New:h10        "Font and size
+    else
+      set guifont=Courier_New:h10         "Font and size
+    endif
     set hlsearch                          "Highlight search results
     set linebreak                         "Don't break word by wrapping
     set list                              "Show white spaces

@@ -18,7 +18,11 @@ function! ide#explore#init()
     setlocal noswapfile
     setlocal nowrap
     setlocal statusline=\ 
-    setlocal wincolor=Comment
+    if has('nvim')
+      setlocal winhighlight=Comment:Comment
+    else
+      setlocal wincolor=Comment
+    endif
     setlocal winfixheight
     setlocal winfixwidth
     syntax match exploredirectory /≡[^$]*$/hs=s+1
