@@ -1,11 +1,11 @@
-" ============================================================================
+" ==============================================================================
 " File:        ide.vim
 " Description: ide plugin
 " Maintainer:  pulleli kunju
 " License:     This program is free software. It comes without any warranty,
 "              to the extent permitted by applicable law. You can redistribute
 "              it and/or modify it under GPL license
-" ============================================================================
+" ==============================================================================
 function! g:IDE(ide='')
   if !exists('g:ide')
     let g:ide={}
