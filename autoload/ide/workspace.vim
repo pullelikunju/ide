@@ -23,12 +23,13 @@ function! ide#workspace#cmd(ws)
   endif
 endfunction
 function! ide#workspace#add(ws)
-  let s:wss[a:ws]={'dir': ide#ide#cwd()}
+  call ide#workspace#update()
+  let s:wss[a:ws]={'dir': ide#ide#cwd(), 'bufs': {}}
   let s:cws=a:ws
-call ide#workspace#save()
 endfunction
 function! ide#workspace#del()
   call remove(s:wss, s:cws)
+  let s:cws=''
 endfunction
 function! ide#workspace#list()
   echo 'IDE()'
@@ -49,8 +50,22 @@ function! ide#workspace#list()
 endfunction
 function! ide#workspace#load(ws)
   execute 'cd '.s:wss[a:ws]['dir']
+  for l:buf in keys(s:wss[a:ws]['bufs'])
+    execute 'e +'.s:wss[a:ws]['bufs'][l:buf]['lnum'].' '.l:buf
+  endfor
   let s:cws=a:ws
 endfunction
 function! ide#workspace#save()
+  call ide#workspace#update()
   call writefile([json_encode(s:wss)], ide#ide#joinpath($HOME, '.ide.vim'))
+endfunction
+function! ide#workspace#update()
+  if s:cws !=? ''
+    let s:wss[s:cws]['bufs']={}
+    for l:buf in getbufinfo({'buflisted': 1})
+      if l:buf.name !=? ''
+        let s:wss[s:cws]['bufs'][l:buf.name]={'lnum': l:buf.lnum}
+      endif
+    endfor
+  endif
 endfunction
