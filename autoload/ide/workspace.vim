@@ -49,6 +49,7 @@ function! ide#workspace#list()
   endif
 endfunction
 function! ide#workspace#load(ws)
+  call ide#workspace#update()
   execute 'cd '.s:wss[a:ws]['dir']
   for l:buf in keys(s:wss[a:ws]['bufs'])
     execute 'e +'.s:wss[a:ws]['bufs'][l:buf]['lnum'].' '.l:buf
