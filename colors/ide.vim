@@ -16,8 +16,6 @@ let s:color = {
   \ 'yellow':     '#E5C07B',
   \ 'yellowD':    '#D19A66'
 \}
-hi clear
-syntax reset
 set background=dark
 let s:opts={'bg': 'guibg', 'fg': 'guifg', 'gui': 'gui'}
 for s:ln in [
