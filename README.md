@@ -1,4 +1,4 @@
-# Simple mouse driven IDE for GVim
+# Simple mouse driven IDE for GVim, neovim
 # Use mouse to navigate.
 # Left Click, Ctrl Click & Shift Click can be used for various operations
 # Easy to learn
