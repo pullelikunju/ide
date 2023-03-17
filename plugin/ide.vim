@@ -36,6 +36,7 @@ function! g:IDE(ide='')
       set guifont=Courier_New:h10         "Font and size
     endif
     set hlsearch                          "Highlight search results
+    set incsearch                         "Highlight as you type in the search
     set linebreak                         "Don't break word by wrapping
     set list                              "Show white spaces
     set listchars=nbsp:‗,space:·,tab:«\ » "Symbol for white space

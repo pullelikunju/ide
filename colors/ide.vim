@@ -79,7 +79,7 @@ for s:ln in [
   \{'id': 'StorageClass',    'fg': 'yellow'},
   \{'id': 'String',          'fg': 'green'},
   \{'id': 'Structure',       'fg': 'yellow'},
-  \{'id': 'TabLine',         'fg': 'white',   'bg': 'comment', 'gui': 'none'},
+  \{'id': 'TabLine',         'fg': 'white',   'bg': 'comment'},
   \{'id': 'TabLineFill',     'fg': 'green',   'bg': 'black'},
   \{'id': 'TabLineSel',      'fg': 'green'},
   \{'id': 'Terminal',        'fg': 'white',   'bg': 'black'},
