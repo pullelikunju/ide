@@ -1,7 +1,7 @@
 function! ide#buffertab#init()
   if g:ide.buffertab ># 0
     set nosplitbelow
-    topleft 1split --idebuffertab--
+    execute 'topleft '.g:ide.buffertab.'split --idebuffertab--'
     let g:ide.win.buffertab=win_getid()
     setlocal bufhidden=delete
     setlocal buftype=nofile
@@ -68,7 +68,11 @@ function! ide#buffertab#update()
   if(!empty(getbufline('--idebuffertab--', 2)))
     silent call deletebufline('--idebuffertab--', 1, '$')
   endif
-  call win_execute(g:ide.win.buffertab, 'resize '.(1+len(l:bufs)/&columns))
+  let l:size=(1+len(l:bufs)/&columns)
+  if g:ide.buffertab ># l:size
+    let l:size=g:ide.buffertab
+  endif
+  call win_execute(g:ide.win.buffertab, 'resize '.l:size)
   call setbufline('--idebuffertab--', 1, l:bufs)
 endfunction
 function! ide#buffertab#handler()

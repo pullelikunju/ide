@@ -2,7 +2,7 @@ function! ide#explore#init()
   if g:ide.explore ># 0
     let g:ide.expand=[]
     set nosplitright
-    topleft vertical 30split --ideexplore--
+    execute 'topleft vertical '.g:ide.explore.'split --ideexplore--'
     let g:ide.win.explore=win_getid()
     execute 'setlocal colorcolumn='.(g:ide.explore+1)
     setlocal bufhidden=delete
