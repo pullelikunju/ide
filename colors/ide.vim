@@ -44,7 +44,7 @@ for s:ln in [
   \{'id': 'Folded',          'fg': 'comment'},
   \{'id': 'Function',        'fg': 'blue'},
   \{'id': 'Identifier',      'fg': 'red'},
-  \{'id': 'IncSearch',       'fg': 'yellow',  'bg': 'comment'},
+  \{'id': 'IncSearch',       'fg': 'white',  'bg': 'comment'},
   \{'id': 'Include',         'fg': 'blue'},
   \{'id': 'Keyword',         'fg': 'purple'},
   \{'id': 'Label',           'fg': 'purple'},
