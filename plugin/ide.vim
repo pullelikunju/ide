@@ -59,8 +59,8 @@ function! g:IDE(ide='')
     call ide#workspace#cmd(a:ide)
   endif
 endfunction
-"augroup IDEStart
-"  autocmd!
-"  autocmd VimEnter * call g:IDE()
-"augroup END
+augroup IDEStart
+  autocmd!
+  autocmd VimEnter * call g:IDE()
+augroup END
 command! -nargs=* IDE call IDE(<f-args>)
