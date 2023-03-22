@@ -22,6 +22,7 @@ function! ide#ide#init()
   call ide#explore#init()
   call ide#buffertab#init()
   call ide#workspace#init()
+  wincmd b
   let l:i=1
   while l:i <# g:ide.workspaces
     wincmd b
@@ -30,6 +31,7 @@ function! ide#ide#init()
   endwhile
   call ide#explore#update()
   call ide#buffertab#update()
+  noremap <silent> <MiddleMouse> <LeftMouse>:call ide#ide#handler('c')<CR>
   noremap <silent> <C-LeftMouse> <LeftMouse>:call ide#ide#handler('c')<CR>
   noremap <silent> <S-LeftMouse> <LeftMouse>:call ide#ide#handler('s')<CR>
   augroup IDEWinNr
