@@ -38,6 +38,7 @@ function! ide#explore#init()
   endif
 endfunction
 function! ide#explore#update()
+  call ide#repo#update()
   if(!empty(getbufline('--ideexplore--', 2)))
     silent call deletebufline('--ideexplore--', 1, '$')
   endif

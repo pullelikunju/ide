@@ -18,8 +18,9 @@ function! g:IDE(ide='')
     let g:ide.workspaces=2                "Number of workspace windows
     let g:ide.workspaceheight=34          "Height of workspace window
     let g:ide.workspacewidth=80           "Width of workspace window
-    let g:ide.git='c:\cygwin64\bin\git'   "Git command
-    let g:ide.svn='c:\cygwin64\bin\svn'   "Subversion command
+    let g:ide.repo={}                     "Repo status
+    let g:ide.repo.git='c:\cygwin64\bin\git.exe'
+    let g:ide.repo.svn='c:\cygwin64\bin\svn.exe'
 
     colorscheme ide                       "Theme
     set autoindent                        "Auto indent new lines
