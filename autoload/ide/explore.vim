@@ -93,10 +93,14 @@ function! ide#explore#handler()
       echo 'Folder Refreshed'
     elseif index(g:ide.expand, l:sel[1]) >=# 0
       call remove(g:ide.expand, index(g:ide.expand, l:sel[1]))
+      let l:ll=line('w$')
       call ide#explore#update()
+      execute 'normal! '.l:ll.'G'
     else
       call add(g:ide.expand, l:sel[1])
+      let l:ll=line('w$')
       call ide#explore#update()
+      execute 'normal! '.l:ll.'G'
       if glob(ide#ide#joinpath(l:sel[1], '*')) ==# ''
         echo 'Opened empty folder'
       endif
