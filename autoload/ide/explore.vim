@@ -17,7 +17,7 @@ function! ide#explore#init()
     setlocal nospell
     setlocal noswapfile
     setlocal nowrap
-    setlocal statusline=\ 
+    setlocal statusline=\ repo:\ %{g:ide.repo.status}
     if has('nvim')
       setlocal winhighlight=Comment:Comment
     else

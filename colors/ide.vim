@@ -75,7 +75,7 @@ for s:ln in [
   \{'id': 'SpellRare',       'fg': 'yellowD'},
   \{'id': 'Statement',       'fg': 'purple'},
   \{'id': 'StatusLine',      'fg': 'comment', 'bg': 'black'},
-  \{'id': 'StatusLineNC',    'fg': 'gray'},
+  \{'id': 'StatusLineNC',    'fg': 'gray',    'bg': 'comment'},
   \{'id': 'StorageClass',    'fg': 'yellow'},
   \{'id': 'String',          'fg': 'green'},
   \{'id': 'Structure',       'fg': 'yellow'},

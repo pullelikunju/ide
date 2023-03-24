@@ -18,10 +18,12 @@ function! ide#ide#init()
   endif
   wincmd o
   let g:ide.win={'last':win_getid()}
+  let g:ide.repo={'status': 'none'}
   call ide#statusline#init()
   call ide#explore#init()
   call ide#buffertab#init()
   call ide#workspace#init()
+  call ide#repo#init()
   wincmd b
   let l:i=1
   while l:i <# g:ide.workspaces
