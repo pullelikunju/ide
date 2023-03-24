@@ -26,6 +26,7 @@ function! g:IDE(ide='')
     set autoindent                        "Auto indent new lines
     set backspace=eol,indent,start        "Backspace over
     set breakindent                       "Wrapped lines get the same indent
+    set clipboard=unnamed                 "Share windows clipboard
     set cursorline                        "Enable highlighting
     set expandtab                         "Convert tab to space
     set fillchars=vert:│,fold:-,eob:\ 
