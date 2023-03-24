@@ -3,21 +3,21 @@ function! ide#repo#init()
   call ide#repo#update()
 endfunction
 function! ide#repo#update()
+  let l:stat='none'
   if isdirectory('.git')
+    let l:stat='git'
     if filereadable(g:ide.bin.git)
-      let l:stat=systemlist(g:ide.bin.git.' status --porcelain')
-      let g:ide.repo.status='git '.len(l:stat)
-    else
-      let g:ide.repo.status='git'
+      let l:stat.=' '.trim(system(g:ide.bin.git.' branch --show-current'))
+      let l:exps=systemlist(g:ide.bin.git.' status --porcelain')
+      let l:stat.=': '.len(l:exps)
     endif
   elseif isdirectory('.svn')
+    let l:stat='svn'
     if filereadable(g:ide.bin.svn)
-      let l:stat=systemlist(g:ide.bin.svn.' status')
-      let g:ide.repo.status='svn '.len(l:stat)
-    else
-      let g:ide.repo.status='svn'
+      let l:stat.=' '.trim(system(g:ide.bin.svn.' info --show-item revision'))
+      let l:exps=systemlist(g:ide.bin.svn.' status')
+      let l:stat.=': '.len(l:exps)
     endif
-  else
-    let g:ide.repo.status='none'
   endif
+  let g:ide.repo.status=l:stat
 endfunction
