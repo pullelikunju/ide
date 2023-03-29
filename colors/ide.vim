@@ -1,4 +1,4 @@
-let s:color = {
+let s:gui = {
   \ 'black':      '#282C34',
   \ 'blue':       '#61AFEF',
   \ 'comment':    '#5C6370',
@@ -16,8 +16,26 @@ let s:color = {
   \ 'yellow':     '#E5C07B',
   \ 'yellowD':    '#D19A66'
 \}
+let s:cterm = {
+  \ 'black':      '0',
+  \ 'blue':       '4',
+  \ 'comment':    '7',
+  \ 'cursor':     '7',
+  \ 'cyan':       '6',
+  \ 'gray':       '7',
+  \ 'green':      '2',
+  \ 'gutter':     '7',
+  \ 'purple':     '5',
+  \ 'red':        '1',
+  \ 'redD':       '1',
+  \ 'special':    '7',
+  \ 'visual':     '7',
+  \ 'white':      '7',
+  \ 'yellow':     '3',
+  \ 'yellowD':    '3',
+\}
 set background=dark
-let s:opts={'bg': 'guibg', 'fg': 'guifg', 'gui': 'gui'}
+let s:opts={'bg': 'bg', 'fg': 'fg', 'gui': 'gui'}
 for s:ln in [
   \{'id': 'Boolean',         'fg': 'yellowD'},
   \{'id': 'Character',       'fg': 'green'},
@@ -98,11 +116,13 @@ for s:ln in [
     let s:hl=''
     for s:opt in keys(s:opts)
       if exists('s:ln[s:opt]')
-        let s:hl.=' '.s:opts[s:opt].'='
-        if exists('s:color[s:ln[s:opt]]')
-          let s:hl.=s:color[s:ln[s:opt]]
+        if exists('s:gui[s:ln[s:opt]]')
+          let s:hl.=' gui'.s:opts[s:opt].'='.s:gui[s:ln[s:opt]]
         else
-          let s:hl.=s:ln[s:opt]
+          let s:hl.=' '.s:opts[s:opt].'='.s:ln[s:opt]
+        endif
+        if exists('s:cterm[s:ln[s:opt]]')
+          let s:hl.=' cterm'.s:opts[s:opt].'='.s:cterm[s:ln[s:opt]]
         endif
       endif
     endfor
