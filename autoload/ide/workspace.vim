@@ -1,72 +1,34 @@
-let s:wss={}
-let s:cws=''
-function! ide#workspace#init()
-  if !empty(glob('~\.ide.vim'))
-    let s:wss=json_decode(readfile(ide#ide#joinpath($HOME, '.ide.vim'))[0])
-  endif
-  augroup IDEWorkspaceSave
-    autocmd!
-    autocmd VimLeavePre * call ide#workspace#save()
-  augroup END
-endfunction
-function! ide#workspace#cmd(ws)
-  if a:ws ==? ''
-    call ide#workspace#list()
-  elseif exists('s:wss[a:ws]')
-    if a:ws ==? s:cws
-      call ide#workspace#del()
-    else
-      call ide#workspace#load(a:ws)
-    endif
-  else
-    call ide#workspace#add(a:ws)
-  endif
-endfunction
-function! ide#workspace#add(ws)
-  call ide#workspace#update()
-  let s:wss[a:ws]={'dir': ide#ide#cwd(), 'bufs': {}}
-  let s:cws=a:ws
-endfunction
-function! ide#workspace#del()
-  call remove(s:wss, s:cws)
-  let s:cws=''
-endfunction
-function! ide#workspace#list()
-  echo 'IDE()'
-  if len(s:wss) <# 1
-    echo '  Workspaces are not set'
-  else
-    let l:wss=keys(s:wss)
-    for l:ws in l:wss
-      let l:ln='  '
-      if l:ws ==? s:cws
-        let l:ln.='%'
-      else
-        let l:ln.=' '
-      endif
-      echo l:ln.l:ws.'  '.s:wss[l:ws]['dir']
-    endfor
-  endif
-endfunction
-function! ide#workspace#load(ws)
-  call ide#workspace#update()
-  execute 'cd '.s:wss[a:ws]['dir']
-  for l:buf in keys(s:wss[a:ws]['bufs'])
-    execute 'e +'.s:wss[a:ws]['bufs'][l:buf]['lnum'].' '.l:buf
-  endfor
-  let s:cws=a:ws
-endfunction
-function! ide#workspace#save()
-  call ide#workspace#update()
-  call writefile([json_encode(s:wss)], ide#ide#joinpath($HOME, '.ide.vim'))
-endfunction
-function! ide#workspace#update()
-  if s:cws !=? ''
-    let s:wss[s:cws]['bufs']={}
-    for l:buf in getbufinfo({'buflisted': 1})
-      if l:buf.name !=? ''
-        let s:wss[s:cws]['bufs'][l:buf.name]={'lnum': l:buf.lnum}
-      endif
-    endfor
-  endif
+function! ide#workspace#init(win)
+  call ide#lib#win('ws'.a:win)
+  execute 'set colorcolumn='.(ide#prop#get('workspacewidth')+1)
+  execute 'set numberwidth='.ide#prop#get('numberwidth')
+  set relativenumber
+  execute 'set statusline=%'.(ide#prop#get('numberwidth')-1).'l'
+  set statusline+=:
+  set statusline+=%c
+  set statusline+=\ 
+  set statusline+=%h
+  set statusline+=%m
+  set statusline+=%q
+  set statusline+=%r
+  set statusline+=%w
+  set statusline+=\ 
+  set statusline+=%n
+  set statusline+=:
+  execute 'set statusline+=%.'.(ide#prop#get('workspacewidth')-34).'f'
+  set statusline+=%=
+  set statusline+=%{&filetype}
+  set statusline+=\ 
+  set statusline+=%{&fileformat}
+  set statusline+=\ 
+  set statusline+=%{&encoding}
+  set statusline+=\ 
+  set statusline+=%p
+  set statusline+=%%
+  set statusline+=\ 
+  set statusline+=/
+  set statusline+=\ 
+  set statusline+=%L
+  set statusline+=\ 
+  call ide#lib#win('last')
 endfunction
