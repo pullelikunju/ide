@@ -1,7 +1,7 @@
 let s:wss={}
 let s:cws=''
 function! ide#cmdws#init()
-  if !empty(glob('~\.ide.vim'))
+  if !empty(glob(ide#lib#joinpath('~', '.ide.vim')))
     let s:wss=json_decode(readfile(ide#lib#joinpath($HOME, '.ide.vim'))[0])
   endif
 endfunction
