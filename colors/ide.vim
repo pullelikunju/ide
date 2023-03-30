@@ -87,7 +87,7 @@ for s:ln in [
   \{'id': 'SpecialChar',     'fg': 'yellowD'},
   \{'id': 'SpecialComment',  'fg': 'comment'},
   \{'id': 'SpecialKey',      'fg': 'gutter'},
-  \{'id': 'SpellBad',        'fg': 'red',                  'gui': 'underline'},
+  \{'id': 'SpellBad',        'fg': 'red',     'bg':'black','gui': 'underline'},
   \{'id': 'SpellCap',        'fg': 'yellowD'},
   \{'id': 'SpellLocal',      'fg': 'yellowD'},
   \{'id': 'SpellRare',       'fg': 'yellowD'},
