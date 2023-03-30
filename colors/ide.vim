@@ -94,6 +94,8 @@ for s:ln in [
   \{'id': 'Statement',       'fg': 'purple'},
   \{'id': 'StatusLine',      'fg': 'comment', 'bg': 'cyan'},
   \{'id': 'StatusLineNC',    'fg': 'gray',    'bg': 'white'},
+  \{'id': 'StatusLineTerm',  'fg': 'cyan',    'bg': 'comment'},
+  \{'id': 'StatusLineTermNC','fg': 'white',   'bg': 'gray'},
   \{'id': 'StorageClass',    'fg': 'yellow'},
   \{'id': 'String',          'fg': 'green'},
   \{'id': 'Structure',       'fg': 'yellow'},

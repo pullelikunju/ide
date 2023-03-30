@@ -2,11 +2,7 @@ function! ide#terminal#init()
   call ide#lib#win('terminal')
   execute 'terminal ++curwin ++kill=term ++shell '.ide#prop#get('shell').' -l'
   setlocal bufhidden=delete
-  if has('nvim')
-    setlocal buftype=terminal
-  else
-    setlocal buftype=nofile
-  endif
+  setlocal buftype=terminal
   setlocal colorcolumn=0
   setlocal filetype=--terminal--
   setlocal matchpairs=
