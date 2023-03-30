@@ -67,6 +67,7 @@ function! ide#buffertab#init()
   highlight link buffertabactive TabLineFill
   syntax match buffertabloaded "\v\[[0-9]+¦[^[]*]"
   highlight link buffertabloaded TabLineSel
+  inoremap <silent> <buffer> <LeftRelease> <Esc>:call ide#buffertab#handlerl()<CR>i
   noremap <silent> <buffer> <LeftRelease> <LeftRelease>:call ide#buffertab#handlerl()<CR>
   call ide#lib#win('last')
 endfunction

@@ -87,6 +87,7 @@ function! ide#explore#init()
   syntax match explorefile /─[^$]*$/hs=s+1
   highlight link explorefile File
   highlight link exploreactive FileSel
+  inoremap <silent> <buffer> <LeftRelease> <Esc>:call ide#explore#handlerl()<CR>i
   noremap <silent> <buffer> <LeftRelease> <LeftRelease>:call ide#explore#handlerl()<CR>
   call ide#lib#win('last')
 endfunction
