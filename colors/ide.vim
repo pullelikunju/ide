@@ -41,6 +41,7 @@ for s:ln in [
   \{'id': 'Character',       'fg': 'green'},
   \{'id': 'ColorColumn',                      'bg': 'cursor'},
   \{'id': 'Comment',         'fg': 'comment',                 'gui': 'italic'},
+  \{'id': 'Conceal',         'fg': 'gutter',  'bg': 'black'},
   \{'id': 'Conditional',     'fg': 'purple'},
   \{'id': 'Constant',        'fg': 'cyan'},
   \{'id': 'Cursor',          'fg': 'black',   'bg': 'blue'},

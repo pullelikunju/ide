@@ -16,6 +16,14 @@ function! ide#lib#handler(mod)
     endif
   endif
 endfunction
+function! ide#lib#indentline()
+  if &g:expandtab
+    setlocal conceallevel=2
+    setlocal concealcursor=cinv
+    syntax match IndentLineSpace /^\s\+/ containedin=ALL contains=IndentLine
+    execute 'syntax match IndentLine / \{'.(&g:tabstop-1).'}\zs / contained conceal cchar='.ide#prop#get('indentchar')
+  endif
+endfunction
 function! ide#lib#init()
   if ide#prop#get('workspaces') <# 1
     call ide#prop#set('workspaces', 1)
@@ -37,6 +45,7 @@ function! ide#lib#init()
     autocmd BufAdd      * call ide#buffertab#update()
     autocmd BufDelete   * call ide#buffertab#update()
     autocmd BufEnter    * call ide#buffertab#update()
+    autocmd BufEnter    * call ide#lib#indentline()
     autocmd DirChanged  * call ide#buffertab#update()
     autocmd DirChanged  * call ide#repo#update()
     autocmd DirChanged  * call ide#explore#update()
