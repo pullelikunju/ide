@@ -11,6 +11,15 @@ function! ide#prop#init()
   let s:prop={}
   return 1
 endfunction
+function! ide#prop#override()
+  if exists('g:ide') && type(g:ide) ==# type({})
+    for l:key in keys(g:ide)
+      if exists('s:prop[l:key]')
+        let s:prop[l:key]=g:ide[l:key]
+      endif
+    endfor
+  endif
+endfunction
 function! ide#prop#set(key, val)
   let s:prop[a:key]=a:val
 endfunction

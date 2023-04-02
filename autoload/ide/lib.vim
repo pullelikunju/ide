@@ -25,6 +25,7 @@ function! ide#lib#indentline()
   endif
 endfunction
 function! ide#lib#init()
+  call ide#prop#override()
   if ide#prop#get('workspaces') <# 1
     call ide#prop#set('workspaces', 1)
   endif
