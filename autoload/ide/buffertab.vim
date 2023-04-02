@@ -61,7 +61,6 @@ function! ide#buffertab#init()
     setlocal wincolor=TabLine
   endif
   setlocal winfixheight
-  setlocal winfixwidth
   setlocal wrap
   syntax match buffertabactive "\v\[[0-9]+:[^[]*]"
   highlight link buffertabactive TabLineFill

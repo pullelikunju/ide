@@ -80,7 +80,6 @@ function! ide#explore#init()
   else
     setlocal wincolor=Comment
   endif
-  setlocal winfixheight
   setlocal winfixwidth
   syntax match exploredirectory /≡[^$]*$/hs=s+1
   highlight link exploredirectory Directory

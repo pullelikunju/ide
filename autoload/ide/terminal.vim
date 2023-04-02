@@ -16,6 +16,5 @@ function! ide#terminal#init()
   setlocal noswapfile
   setlocal statusline=\ 
   setlocal winfixheight
-  setlocal winfixwidth
   call ide#lib#win('last')
 endfunction
