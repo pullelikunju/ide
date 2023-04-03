@@ -10,7 +10,7 @@
 Please report if you find any bugs or have a feature idea
 
 
-![ide for gvim](https://user-images.githubusercontent.com/126577554/223862382-43ca7aff-656d-435a-8f52-890251d55653.png)
+![ide](https://user-images.githubusercontent.com/126577554/229587754-3352f35b-75c4-4e3a-8d16-0b11be3a272a.png)
 
 
 Pulleli Kunju
