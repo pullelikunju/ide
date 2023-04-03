@@ -17,24 +17,25 @@ let s:gui = {
   \ 'yellowD':    '#D19A66'
 \}
 let s:cterm = {
-  \ 'black':      '0',
+  \ 'black':      '235',
   \ 'blue':       '4',
-  \ 'comment':    '7',
-  \ 'cursor':     '0',
+  \ 'comment':    '59',
+  \ 'cursor':     '236',
   \ 'cyan':       '6',
-  \ 'gray':       '0',
+  \ 'gray':       '237',
   \ 'green':      '2',
-  \ 'gutter':     '7',
+  \ 'gutter':     '239',
   \ 'purple':     '5',
   \ 'red':        '1',
   \ 'redD':       '1',
-  \ 'special':    '7',
-  \ 'visual':     '7',
-  \ 'white':      '7',
+  \ 'special':    '237',
+  \ 'visual':     '238',
+  \ 'white':      '139',
   \ 'yellow':     '3',
   \ 'yellowD':    '3',
 \}
 set background=dark
+set t_Co=256
 let s:opts={'bg': 'bg', 'fg': 'fg', 'gui': 'gui'}
 for s:ln in [
   \{'id': 'Boolean',         'fg': 'yellowD'},
