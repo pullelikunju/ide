@@ -10,7 +10,9 @@
 Please report if you find any bugs or have a feature idea
 
 
-![ide](https://user-images.githubusercontent.com/126577554/229587754-3352f35b-75c4-4e3a-8d16-0b11be3a272a.png)
+
+![ide](https://user-images.githubusercontent.com/126577554/229587972-1f886872-d108-495e-bd8d-f582a0c04e6d.png)
+
 
 
 Pulleli Kunju
