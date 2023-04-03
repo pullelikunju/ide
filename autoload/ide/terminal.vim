@@ -1,6 +1,10 @@
 function! ide#terminal#init()
   call ide#lib#win('terminal')
-  execute 'terminal ++curwin ++kill=term ++shell '.ide#prop#get('shell').' -l'
+  if has('nvim')
+    execute 'terminal '.ide#prop#get('shell').' -l'
+  else
+    execute 'terminal ++curwin ++kill=term ++shell '.ide#prop#get('shell').' -l'
+  endif
   setlocal bufhidden=delete
   setlocal buftype=terminal
   setlocal colorcolumn=0
