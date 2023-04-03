@@ -11,7 +11,7 @@ Please report if you find any bugs or have a feature idea
 
 
 
-![ide](https://user-images.githubusercontent.com/126577554/229587972-1f886872-d108-495e-bd8d-f582a0c04e6d.png)
+![ide](https://user-images.githubusercontent.com/126577554/229588427-1b52b614-8ed4-4814-8b88-c6a741602255.png)
 
 
 
