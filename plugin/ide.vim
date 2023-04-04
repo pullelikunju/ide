@@ -31,10 +31,10 @@ function! s:ide()
   set cursorline                          "Enable highlighting
   set expandtab                           "Convert tab to space
   set fillchars=vert:│,fold:-,eob:\ 
-  set guicursor=a:ver10-Cursor/lCursor    "Default cursor
+  set guicursor=a:ver15-Cursor/lCursor    "Default cursor
   set guicursor+=n:block-Cursor/lCursor   "Normal mode cursor
   set guicursor+=r:hor25-Cursor/lCursor   "Replace mode cursor
-  set guicursor+=v:hor10-Cursor/lCursor   "Replace mode cursor
+  set guicursor+=v:hor10-Cursor/lCursor   "Visual mode cursor
   if has('nvim')
     set guifont=Courier\ New:h10          "Font and size
   else
