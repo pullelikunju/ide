@@ -20,7 +20,7 @@ function! s:ide()
   call ide#prop#set('svn',                'c:\cygwin64\bin\svn.exe')
   call ide#prop#set('terminal',           7   ) "Terminal window height
   call ide#prop#set('workspaces',         2   ) "Number of workspace windows
-  call ide#prop#set('workspaceheight',    37  ) "Height of workspace window
+  call ide#prop#set('workspaceheight',    34  ) "Height of workspace window
   call ide#prop#set('workspacewidth',     80  ) "Width of workspace window
 
   colorscheme ide                         "Theme
