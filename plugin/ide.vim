@@ -15,7 +15,7 @@ function! s:ide()
   call ide#prop#set('git',                'c:\cygwin64\bin\git.exe')
   call ide#prop#set('indentchar',         '│' ) "Indent line: space to disable
   call ide#prop#set('laststatus',         2   ) "Status bar: 0, 1 or 2
-  call ide#prop#set('numberwidth',        4   ) "Width of number; 0 to disable
+  call ide#prop#set('numberwidth',        5   ) "Width of number; 0 to disable
   call ide#prop#set('shell',              'c:\cygwin64\bin\bash.exe')
   call ide#prop#set('svn',                'c:\cygwin64\bin\svn.exe')
   call ide#prop#set('terminal',           7   ) "Terminal window height
