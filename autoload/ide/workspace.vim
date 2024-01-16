@@ -15,7 +15,7 @@ function! ide#workspace#init(win)
   set statusline+=\ 
   set statusline+=%n
   set statusline+=:
-  execute 'set statusline+=%.'.(ide#prop#get('workspacewidth')-34).'f'
+  execute 'set statusline+=%.'.(ide#prop#get('workspacewidth')-37).'f'
   set statusline+=%=
   set statusline+=%{&filetype}
   set statusline+=\ 
