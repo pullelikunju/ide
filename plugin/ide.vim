@@ -30,6 +30,8 @@ function! s:ide()
   set clipboard=unnamed                   "Share windows clipboard
   set cursorline                          "Enable highlighting
   set expandtab                           "Convert tab to space
+  set fileformat=unix                     "Default unix fileformat
+  set fileformats=unix                    "Default unix fileformats
   set fillchars=vert:│,fold:-,eob:\ 
   set guicursor=a:ver15-Cursor/lCursor    "Default cursor
   set guicursor+=n:block-Cursor/lCursor   "Normal mode cursor
